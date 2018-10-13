@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CollaborationService } from '../../services/collaboration.service';
+import { ActivatedRoute, Params } from '@angular/router';
+
 declare var ace: any;
 
 @Component({
@@ -9,7 +12,11 @@ declare var ace: any;
 export class EditorComponent implements OnInit {
 
 	editor: any;
-  	defaultContent = {
+  sessionId: string;
+	public languages: string[] = ['Java', 'Python'];
+	language: string = 'Java';
+
+  defaultContent = {
     	'Java': `public class Example {
     public static void main(String[] args) {
         // Type your Java code here
@@ -20,13 +27,50 @@ export class EditorComponent implements OnInit {
         # write your Python code here`
  	};
 
-  	constructor() { }
+  	constructor(private collaboration: CollaborationService,
+                private route: ActivatedRoute) { }
 
   	ngOnInit() {
+      this.route.params.subscribe(params => {
+        this.sessionId = params['id'];
+        this.initEditor();
+      });
+    }
+
+    initEditor(){
   		this.editor = ace.edit("editor");
 	    this.editor.setTheme("ace/theme/eclipse");
-	    this.editor.getSession().setMode("ace/mode/java");
-	    this.editor.setValue(this.defaultContent['Java']);
+	    this.resetEditor();
+
+      document.getElementsByTagName('textarea')[0].focus();
+
+      // set up collaboration socket
+	    this.collaboration.init(this.editor, this.sessionId);
+
+      this.editor.lastAppliedChange = null;
+
+      // register change callback
+      this.editor.on('change', (e) => {
+        console.log('editor changes: ' + JSON.stringify(e));
+
+        if (this.editor.lastAppliedChange != e) {
+          this.collaboration.change(JSON.stringify(e));
+        }
+      });
   	}
 
+  	resetEditor(): void {
+  		this.editor.getSession().setMode("ace/mode/" + this.language.toLowerCase());
+	    this.editor.setValue(this.defaultContent[this.language]);
+  	}
+
+  	setLanguage(language: string): void {
+  		this.language = language;
+  		this.resetEditor();
+  	}
+
+  	submit(): void {
+  		let userCode = this.editor.getValue();
+  		console.log(userCode);
+  	}
 }
