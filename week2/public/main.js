@@ -196,7 +196,7 @@ var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "@media screen { \n #editor { \n   height: 600px; \n } \n  .lang-select { \n   width: 100px; \n   margin-right: 10px; \n } \n  header .btn { \n   margin: 0 5px; \n } \n  footer .btn { \n   margin: 0 5px; \n } \n  .editor-footer, .editor-header { \n   margin: 10px 0; \n } \n  .cursor { \n   /*position:absolute;*/ \n   background: rgba(0, 250, 0, 0.5); \n   z-index: 40; \n   width: 2px!important \n } \n}"
 
 /***/ }),
 
