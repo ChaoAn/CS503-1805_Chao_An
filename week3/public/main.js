@@ -253,6 +253,8 @@ var EditorComponent = /** @class */ (function () {
             _this.sessionId = params['id'];
             _this.initEditor();
         });
+        // restore buffer from backend
+        this.collaboration.restoreBuffer();
     };
     EditorComponent.prototype.initEditor = function () {
         var _this = this;
@@ -662,6 +664,10 @@ var CollaborationService = /** @class */ (function () {
     CollaborationService.prototype.change = function (delta) {
         this.collaborationSocket.emit('change', delta);
     };
+    // restore buffer from redis cache
+    CollaborationService.prototype.restoreBuffer = function () {
+        this.collaborationSocket.emit('restoreBuffer');
+    };
     CollaborationService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -820,7 +826,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chao/Documents/bittiger/cs503/cs503-1805/CS503-1805_Chao_An/week2/oj-client/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/chao/Documents/bittiger/cs503/cs503-1805/CS503-1805_Chao_An/week3/oj-client/src/main.ts */"./src/main.ts");
 
 
 /***/ })
