@@ -27,6 +27,11 @@ module.exports = function(io) {
 
 		if (sessionId in collaborations) {
 			collaborations[sessionId]['participants'].push(socket.id);
+
+			let participants = collaborations[sessionId]['participants'];
+			for (let i = 0; i < participants.length; i++) {
+				io.to(participants[i]).emit('userChange', participants);
+			}
 		} else {
 			redisClient.get(sessionPath + sessionId, (data) => {
 				if (data) {
@@ -44,6 +49,12 @@ module.exports = function(io) {
 				}
 
 				collaborations[sessionId]['participants'].push(socket.id);
+
+				let participants = collaborations[sessionId]['participants'];
+				for (let i = 0; i < participants.length; i++) {
+					io.to(participants[i]).emit('userChange', participants);
+				}
+
 				console.log(collaborations[sessionId]['participants']);
 			});
 		}
@@ -114,6 +125,11 @@ module.exports = function(io) {
 						redisClient.expire(key, TIMEOUT_IN_SECONDS);
 						delete collaborations[sessionId];
 					}
+				}
+
+
+				for (let i = 0; i < participants.length; i++) {
+					io.to(participants[i]).emit('userChange', participants);
 				}
 			}
 

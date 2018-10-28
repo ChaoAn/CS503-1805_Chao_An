@@ -17,6 +17,7 @@ export class EditorComponent implements OnInit {
 	public languages: string[] = ['Java', 'Python'];
 	language: string = 'Java';
   output: string = '';
+  users: string = '';
 
   defaultContent = {
     	'Java': `public class Example {
@@ -51,7 +52,8 @@ export class EditorComponent implements OnInit {
       document.getElementsByTagName('textarea')[0].focus();
 
       // set up collaboration socket
-	    this.collaboration.init(this.editor, this.sessionId);
+	    this.collaboration.init(this.editor, this.sessionId)
+        .subscribe(users => this.users = users);
 
       this.editor.lastAppliedChange = null;
 
