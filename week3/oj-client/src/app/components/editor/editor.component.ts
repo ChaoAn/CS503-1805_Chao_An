@@ -14,7 +14,7 @@ export class EditorComponent implements OnInit {
 
 	editor: any;
   sessionId: string;
-	public languages: string[] = ['Java', 'Python'];
+	public languages: string[] = ['Java', 'Python', 'C++'];
 	language: string = 'Java';
   output: string = '';
   users: string = '';
@@ -25,9 +25,13 @@ export class EditorComponent implements OnInit {
         // Type your Java code here
 	} 
 }`,
-        'Python': `class Solution:
+      'Python': `class Solution:
     def example():
-        # write your Python code here`
+        # write your Python code here`,
+      'C++': `int main()
+{
+    return 0;
+}`
  	};
 
   	constructor(private collaboration: CollaborationService,
