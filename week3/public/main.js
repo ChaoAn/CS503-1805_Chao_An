@@ -859,7 +859,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chao/Documents/bittiger/cs503/cs503-1805/CS503-1805_Chao_An/week3/oj-client/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/chao/Documents/bittiger/cs503/cs503-1805/assignment/CS503-1805_Chao_An/week3/oj-client/src/main.ts */"./src/main.ts");
 
 
 /***/ })

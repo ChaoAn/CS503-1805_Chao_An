@@ -580,8 +580,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/chao/Documents/bittiger/cs503/cs503-1805/CS503-1805_Chao_An/week3/oj-client/src/styles.css */"./src/styles.css");
-module.exports = __webpack_require__(/*! /Users/chao/Documents/bittiger/cs503/cs503-1805/CS503-1805_Chao_An/week3/oj-client/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! /Users/chao/Documents/bittiger/cs503/cs503-1805/assignment/CS503-1805_Chao_An/week3/oj-client/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/chao/Documents/bittiger/cs503/cs503-1805/assignment/CS503-1805_Chao_An/week3/oj-client/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 
 /***/ })
